@@ -5,7 +5,7 @@ Cet exercice a pour objectifs :
 * D'utiliser les commande expect et m4
 * De journaliser avec script et logger et de communiquer avec motd et wall
 * De tracer mes modifications d'un fichiers de configuration avec RCS
-* D'Ecrire une page de manuel
+* D'écrire une page de manuel
 * D'utiliser la commande sudo
 * De découvrir les commande diff et patch
 
@@ -15,20 +15,26 @@ Cet exercice a pour objectifs :
 ```sh
 #!/bin/sh
 # disk_full - teste si les disques sont plein
-export LANG=C
-:
-${SEUIL:=80}
-message=/tmp/bidon$$
+SEUIL=80
+message=/tmp/bidon
+
 df -P | grep -v '^Filesystem' | sed 's/%//' |
 while read fs total used avail capacity mount
-do
-if [ "$capacity" -gt $SEUIL ];then
-printf "%-20s %5d%%\n" $mount $capacity >> $message
-fi
+    do
+        if [ "$capacity" -gt $SEUIL ];then
+            printf "%-20s %5d%%\n" $mount $capacity >> $message
+        fi
 done
 if [ -r $message ];then
-mail -s "LES DISQUES SONT PLEINS" root < $message
-rm -f $message
+    if [ -x "mail -v" ];then
+        mail -s "LES DISQUES SONT PLEINS" root < $message
+    else 
+        apt install mailutils
+        echo 'Mail a été installé'
+        mail -s "LES DISQUES SONT PLEINS" root < $message
+
+        rm -f $message
+    fi
 fi
 ```
 * Tester le script manuellement
