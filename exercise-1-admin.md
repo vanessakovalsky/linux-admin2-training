@@ -83,8 +83,7 @@ date
 * * id 
 * * uname -a
 * * uptime
-* Afficher le script et lancer le .
-
+* Afficher le script et lancer le (après l'avoir modifié et transformer en script utilisable).
 * Ajouter le fichier des actions administrateur au syslog : echo "local1.*
 /var/log/journal_de_bord.log" >> /etc/rsyslog.conf
 * Redemarrer le service rsyslog
