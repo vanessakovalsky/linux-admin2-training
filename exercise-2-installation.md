@@ -261,14 +261,11 @@ rpm –q nbmister-debuginfo
 
 ## Créer un serveur de dépôt Debian
 * On va créer un dépôt accessible en SSH 
-* Créer un utilisateur :
+
+* Puis générer une clé GPG pour l'utilisateur courant (suivre l'assistant en laissant les options par défaut pour la génération de la clé). Il est aussi nécessaire d'exporter la variable GPG_TTY pour pouvoir signer son paquet par la suite.
 ```
-adduser myrepo
-```
-* Puis générer une clé GPG pour l'utilisateur créé (suivre l'assistant en laissant les options par défaut pour la génération de la clé)
-```
-su - myrepo
 gpg --gen-key
+export GPG_TTY=$(tty)
 ```
 * Créer deux répertoire conf et incoming dans le home de l'utilisateur 
 ```
