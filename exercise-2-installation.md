@@ -161,13 +161,13 @@ rpmbuild --rebuild rpmbuild/SRPMS/nbmister-1.0-1.src.rpm
 * Le fichier control est obligatoire et permet de décrire notre paquet, voici un exemple de contenu : 
 ```
 Package: myecho
-    Version: 1.0
-    Section: base
-    Priority: optional
-    Architecture: all
-    Depends: bash
-    Maintainer: Mr X <MrX@fun.com>
-    Description: Echoes the content of /home/<you>/.myecho_content
+Version: 1.0
+Section: base
+Priority: optional
+Architecture: all
+Depends: bash
+Maintainer: Mr X <MrX@fun.com>
+Description: Echoes the content of /home/<you>/.myecho_content
 ```
 * Il est possible de demander à depkg d'éxécuter des commandes à la suite de l'installation avec le fichier postinst. Exemple
 ```
