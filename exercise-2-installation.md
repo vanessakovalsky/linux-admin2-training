@@ -78,7 +78,9 @@ if ( a_try > misterious_number ) puts("=== too high ===");
 }
 printf("YOUPI!!!!\n");
 }
-# vi bib.c
+```
+# créer un fichier bib.c
+``` c
 /* bib.c */
 # include <stdlib.h>
 # include <time.h>
@@ -86,13 +88,15 @@ int random_number() {
 srandom( time(0) );
 return random() % 100 + 1;
 }
-# vi Makefile
+``` 
+* Créer un fichier Makefile
+``` makefile
 nbmister: nbmister.o bib.o
-cc -o nbmister nbmister.o bib.o
+    cc -o nbmister nbmister.o bib.o
 install: nbmister
-install -m 755 nbmister /usr/local/bin
+    install -m 755 nbmister /usr/local/bin
 clean:
-rm -f *.o
+    rm -f *.o
 ```
 * Tester le fonctionnement 
 ```
